@@ -1,0 +1,20 @@
+[
+    {
+        "title": "About",
+        "id": "0",
+        "html": "<h2>about me</h2>",
+        "type": "about"
+    },
+    {
+        "title": "Contact",
+        "id": "1",
+        "html": "<h2>contact list</h2>",
+        "type": "contact"
+    },
+    {
+        "title": "Home",
+        "id": "2",
+        "html": "<h2>home</h2>",
+        "type": "home"
+    }
+]
