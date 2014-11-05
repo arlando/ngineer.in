@@ -4,9 +4,8 @@ var Post;
 
 Post = Backbone.Model.extend({
     initialize: function (options) {
-        if (options) {
-            this.set('urlName', options.url.trim().toLowerCase().replace(/ /g, '-'));
-        }
+        options = options || {};
+        if (options.url) this.set('urlName', options.url.trim().toLowerCase().replace(/ /g, '-'));
     }
 });
 

@@ -1,2 +1,5 @@
 .idea/*
 .jshintrc
+.*
+!/.gitignore
+spec/npm-debug.log
