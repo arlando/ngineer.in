@@ -10,7 +10,7 @@ var AppView = MultiView.extend({
         this.subViews.push(this.navigationView);
     },
 
-    render: function() {
+    render: function () {
         this.$el.empty();
         this.$el.append(this.navigationView.$el);
         this.navigationView.render();
@@ -30,7 +30,7 @@ var AppView = MultiView.extend({
         return this;
     },
 
-    _closeChildViews: function () {
+    closeChildViews: function () {
         var subViews = this.subViews;
 
         //do not want to remove navigation view
@@ -45,7 +45,7 @@ var AppView = MultiView.extend({
     },
 
     closeChildViewsAndRender: function () {
-        this._closeChildViews()
+        this.closeChildViews()
             .render();
     }
 

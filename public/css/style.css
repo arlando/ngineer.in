@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.navigation {
+    width: 200px;
+    height: 100vh;
+    color: #303030;
+    padding-left: 10px;
+}
+
+.navigation-links {
+    list-style-type: none;
+    margin: 20px 0 0 0;
+    padding: 0;
+}
+
+.navigation-link {
+    margin: 5px;
+}
+
+.navigation a, .navigation a:visited, .navigation a:hover {
+    color: #000000;
+    text-decoration: none;
+}
+
+.page {
+    width: 100%;
+    padding-left: 10px;
+}
+
+#app {
+    display: flex;
+}
+
+.my-name {
+    text-transform: uppercase;
+    font-weight: 800;
+}

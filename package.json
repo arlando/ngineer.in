@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "watch": "watchify js/main.js -o public/js/main.js --debug --verbose"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,8 @@
     "gulp": "^3.8.7",
     "gulp-livereload": "^2.1.1",
     "hbsfy": "^2.1.0",
-    "vinyl-source-stream": "^0.1.1"
+    "vinyl-source-stream": "^0.1.1",
+    "watchify": "^2.0.0"
   },
   "dependencies": {
     "backbone": "^1.1.2",
@@ -31,7 +33,8 @@
     "handlebars": "^2.0.0-alpha.4",
     "jquery": "^2.1.1",
     "method-override": "^2.1.3",
-    "underscore": "^1.6.0"
+    "underscore": "^1.6.0",
+    "three": "^0.66.4"
   },
   "browserify": {
     "transform": [

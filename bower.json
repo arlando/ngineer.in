@@ -1,0 +1,19 @@
+{
+  "name": "ngineerin",
+  "version": "0.0.0",
+  "homepage": "https://github.com/arlando/ngineer.in",
+  "authors": [
+    "Arlando Battle <arlando@gmail.com>"
+  ],
+  "description": "Website for Arlando Battle",
+  "main": "server.js",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

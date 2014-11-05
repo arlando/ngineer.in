@@ -5,7 +5,7 @@ var pageCollection = require('../../collections/pageCollection');
 var PageView;
 
 PageView = Backbone.View.extend({
-    className: 'page-view',
+    className: 'page page-view',
 
     initialize: function (options) {
         if (options) {

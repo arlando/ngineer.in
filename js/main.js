@@ -2,4 +2,4 @@
 
 var Backbone = require('backbone');
 Backbone.$ = require('jquery');
-var router = require('./meta/router');
+require('./meta/router');

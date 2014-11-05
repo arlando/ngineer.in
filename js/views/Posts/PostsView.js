@@ -8,7 +8,7 @@ var PostView = require('./PostView');
 var MultiView = require('../MultiView');
 
 var PostsView = MultiView.extend({
-    className: 'posts-view',
+    className: 'page posts-view',
 
     initialize: function () {
         MultiView.prototype.initialize.call(this);

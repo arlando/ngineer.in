@@ -7,8 +7,9 @@ var Backbone = require('backbone');
 var MultiView;
 
 MultiView = Backbone.View.extend({
-    initialize: function () {
+    constructor: function () {
         this.subViews = [];
+        Backbone.View.apply(this, arguments);
     },
 
     render: function () {

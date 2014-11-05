@@ -4,9 +4,11 @@ var template = require('../templates/navigation-item.handlebars');
 
 var NavigationLinkView = Backbone.View.extend({
     className: 'navigation-link',
+    tagName: 'li',
 
     initialize: function (options) {
-        this.data = options.data;
+        options = options || {};
+        this.data = options.data || {};
         this.data.urlName = this.data.url.trim().toLowerCase().replace(' ', '-');
     },
 

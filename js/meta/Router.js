@@ -12,14 +12,7 @@ var Router;
 var router;
 
 Router = Backbone.Router.extend({
-    initialize: function (options) {
-        this.app = options.app;
-        this.app.render();
-        this.currentPage = null;
-    },
-
     routes: {
-        //TODO reduce using regex
         'blog/:name': 'getPost',
         'blog': 'getPosts',
         'about': 'getAbout',
@@ -29,10 +22,12 @@ Router = Backbone.Router.extend({
         '*default': 'defaultRoute'
     },
 
-    /**
-     * Gets a specific post and renders it.
-     * @param name
-     */
+    initialize: function (options) {
+        this.app = options.app;
+        this.app.render();
+        this.currentPage = null;
+    },
+
     getPosts: function (name) {
         this.destroyCurrentView();
         var postsView = new PostsView();
@@ -40,14 +35,9 @@ Router = Backbone.Router.extend({
         this.currentPage = postsView;
     },
 
-    /**
-     * Don't want to rerender entire view if post is changing just want change
-     * the model on the subview.
-     * @param name
-     */
     getPost: function (name) {
         if (this.currentPage instanceof PostsView) {
-            this.currentPage.setPostAndRenderPostView(name)
+            this.currentPage.setPostAndRenderPostView(name);
         } else {
             this.destroyCurrentView();
             this.getPosts(name);
@@ -77,7 +67,7 @@ Router = Backbone.Router.extend({
     defaultRoute: function () {
         this._makePageView({
             type: 'home'
-        })
+        });
     },
 
     destroyCurrentView: function () {
