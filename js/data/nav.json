@@ -1,12 +1,22 @@
 [
     {
-        "name": "About",
-        "id": "0",
-        "url": "about"
+      "name": "close",
+      "url": "close"
     },
     {
-        "name": "Blog",
-        "id": "1",
-        "url": "blog"
+      "name": "home",
+      "url": ""
+    },
+    {
+      "name": "About",
+      "url": "about"
+    },
+    {
+      "name": "Blog",
+      "url": "blog"
+    },
+    {
+      "name": "Experiments",
+      "url": "experiments"
     }
 ]

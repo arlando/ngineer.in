@@ -8,8 +8,6 @@ var NavigationLinkView = require('./NavigationLinkView');
 var NavigationView = MultiView.extend({
     className: 'navigation',
 
-    cache: {},
-
     render: function () {
         var fragment = document.createDocumentFragment();
         var LinkView = NavigationLinkView;
@@ -25,7 +23,7 @@ var NavigationView = MultiView.extend({
             fragment.appendChild(linkView.render().el);
         }
         this.$el.html(template());
-        this.$el.find('ul').html(fragment);
+        this.$el.append(fragment);
         return this;
     }
 });
