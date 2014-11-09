@@ -8,6 +8,9 @@ var NavigationView = require('../views/NavigationView');
 var PostsView = require('../views/Posts/PostsView');
 var PageView = require('../views/Page/PageView');
 
+//Meta
+var eventBus = require('./EventBus');
+
 var Router;
 var router;
 
@@ -26,6 +29,7 @@ Router = Backbone.Router.extend({
         this.app = options.app;
         this.app.render();
         this.currentPage = null;
+        eventBus.on('router:navigate', this.navigate, this);
     },
 
     getPosts: function (name) {
