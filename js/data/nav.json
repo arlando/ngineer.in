@@ -18,10 +18,5 @@
         "name": "home",
         "url": "",
         "svg": "home"
-    },
-    {
-        "name": "close",
-        "url": "close",
-        "svg": "close"
     }
 ]
