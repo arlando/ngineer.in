@@ -1,22 +1,27 @@
 [
     {
-      "name": "close",
-      "url": "close"
+        "name": "Experiments",
+        "url": "experiments",
+        "svg": "lab"
     },
     {
-      "name": "home",
-      "url": ""
+        "name": "Blog",
+        "url": "blog",
+        "svg": "notebook"
     },
     {
-      "name": "About",
-      "url": "about"
+        "name": "About",
+        "url": "about",
+        "svg": "user"
     },
     {
-      "name": "Blog",
-      "url": "blog"
+        "name": "home",
+        "url": "",
+        "svg": "home"
     },
     {
-      "name": "Experiments",
-      "url": "experiments"
+        "name": "close",
+        "url": "close",
+        "svg": "close"
     }
 ]
