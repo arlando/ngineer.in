@@ -1,54 +1,39 @@
 'use strict';
-var MultiView = require('./MultiView');
 
-var AppView = MultiView.extend({
+var Backbone =  require('backbone');
+
+var AppView = Backbone.View.extend({
     el: '#app',
 
     initialize: function (options) {
-        MultiView.prototype.initialize.call(this);
-        this.navigationView = options.navigationView;
-        this.subViews.push(this.navigationView);
+        options = options || {};
+        this.collection = options.collection;
+        this.SingleContentView = options.SingleContentView;
+        this.MultiContentView = options.MultiContentView;
     },
 
     render: function () {
-        this.$el.empty();
-        this.$el.append(this.navigationView.$el);
-        this.navigationView.render();
-        return this;
-    },
+        var fragment = document.createDocumentFragment();
+        var size = this.collection.size();
 
-    /**
-     *
-     * @param subView - the sub view to add
-     * @param argz - Arguments passed to the sub app's render method
-     * @returns {AppView}
-     */
-    addAppAndRenderIt: function (subView, argz) {
-        this.subViews.push(subView);
-        this.$el.append(subView.$el);
-        subView.render(argz);
-        return this;
-    },
+        for (var i = 0; i < size; i++) {
+            var model = this.collection.at(i);
+            var type = model.get('type');
+            var view;
 
-    closeChildViews: function () {
-        var subViews = this.subViews;
-
-        //do not want to remove navigation view
-        for (var i = subViews.length - 1; i >= 1; i--) {
-            var view = subViews[i];
-            if (view.close) {
-                view.close();
+            if (type === 'SINGLE_CONTENT_VIEW') {
+                view = new this.SingleContentView({ model: model });
+            } else {
+                view = new this.MultiContentView({ model: model });
             }
+
+            fragment.appendChild(view.el);
+            view.render();
         }
 
+        this.$el.append(fragment);
         return this;
-    },
-
-    closeChildViewsAndRender: function () {
-        this.closeChildViews()
-            .render();
     }
-
 });
 
 module.exports = AppView;

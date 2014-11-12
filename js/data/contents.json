@@ -1,0 +1,8 @@
+[
+    {
+        "name": "about me",
+        "content": "im just trying to get thsi right.",
+        "route": "about",
+        "type": "SINGLE_CONTENT_VIEW"
+    }
+]
