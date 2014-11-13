@@ -35,11 +35,29 @@ ContentView = Backbone.View.extend({
     },
 
     open: function () {
-        this.setCurrentState('open');
+        this.handleState('open');
     },
 
     close: function () {
-        this.setCurrentState('closed');
+        this.handleState('closed');
+    },
+
+    handleState: function (state) {
+        this.setCurrentState(state);
+        this.changeOpenCloseSymbol();
+        this.showOrCloseContent();
+    },
+
+    changeOpenCloseSymbol: function () {
+        this.$openClosedStateSymbol = this.$openClosedStateSymbol || this.$el.find('.scv-open-closed-state');
+        if (this.VIEW_STATE === 'closed') this.$openClosedStateSymbol.html('+');
+        else this.$openClosedStateSymbol.html('x')
+    },
+
+    showOrCloseContent: function () {
+        this.$scvContent = this.$scvContent || this.$el.find('.scv-content');
+        this.$scvContent.toggleClass('is-closed');
+        this.$scvContent.toggleClass('is-open');
     },
 
     setCurrentState: function (state) {
@@ -54,10 +72,6 @@ ContentView = Backbone.View.extend({
 
     getCurrentState: function () {
         return this.VIEW_STATE;
-    },
-
-    render: function () {
-        return this;
     }
 }); //try putting class props here
 

@@ -10,7 +10,7 @@ var SingleContentView;
 
 SingleContentView = ContentView.extend({
     render: function () {
-        this.$el.html(template(this.model.toJSON()));
+        this.$el.append(template(this.model.toJSON()));
         return this;
     }
 });
