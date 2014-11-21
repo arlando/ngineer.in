@@ -1,8 +1,14 @@
 [
     {
         "name": "about me",
-        "content": "im just trying to get thsi right.",
+        "content": "i am just trying to get this right.",
         "route": "about",
+        "type": "SINGLE_CONTENT_VIEW"
+    },
+    {
+        "name": "spotify",
+        "content": "",
+        "route": "spotify",
         "type": "SINGLE_CONTENT_VIEW"
     }
 ]
