@@ -11,6 +11,8 @@ var SingleContentView;
 SingleContentView = ContentView.extend({
     render: function () {
         this.$el.append(template(this.model.toJSON()));
+        this.$el.find('.scv');
+        this.transitionIn();
         return this;
     }
 });

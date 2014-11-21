@@ -1,7 +1,8 @@
 'use strict';
 
 var Backbone = require('backbone');
-Backbone.$ = require('jquery');
+var $ = require('jquery');
+Backbone.$ = $;
 var Router = require('./meta/router');
 var AppView = require('./views/AppView');
 var contents = require('./data/contents.json');

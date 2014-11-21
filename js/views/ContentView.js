@@ -4,6 +4,7 @@
 'use strict';
 
 var Backbone = require('backbone');
+var _ = require('underscore');
 var ContentView;
 
 ContentView = Backbone.View.extend({
@@ -68,6 +69,29 @@ ContentView = Backbone.View.extend({
             state = (state === 'closed') ? 'open' : 'closed';
         }
         this.VIEW_STATE = this.STATES[state]
+    },
+
+
+    transitionIn: function (callback) {
+        var self = this;
+
+        var animateIn = function () {
+            self.$el.addClass('is-visible');
+            self.$el.one('transitionend', function () {
+                if (callback) callback();
+            });
+        };
+
+        _.delay(animateIn, 20);
+    },
+
+    transitionOut: function (callback) {
+        var self = this;
+
+        self.$el.removeClass('is-visible');
+        self.$el.one('transitionend', function () {
+           if (callback) callback();
+        });
     },
 
     getCurrentState: function () {

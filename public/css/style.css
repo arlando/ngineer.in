@@ -5,6 +5,13 @@ body {
     background: #EAEAEA;
 }
 
+.is-preload * {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+}
+
 .scv {
     width: 300px;
     background: white;
@@ -16,19 +23,21 @@ body {
     right: 0;
     /*bottom: 0;*/
     left: 0;
-    transform: translate3d(100%, 0, 0);
+    transform: translate3d(1000%, 0, 0);
     transition: all 3s ease;
+
 }
 
-.scv.is-visible {
-    transform: translate3d(0, 0, 0);
+.is-visible .scv {
+    transform: translate3d(10%, 100%, 0);
+    transition: all 3s ease;
 }
 
 .scv-content.is-closed {
     visibility:hidden;
     display: none;
     opacity:0;
-    transition:visibility 0s linear 0.5s,opacity 0.5s linear;
+    transition: visibility 0s linear 0.5s,opacity 0.5s linear;
 }
 
 .scv-content.is-open {
