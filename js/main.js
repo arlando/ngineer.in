@@ -11,7 +11,9 @@ var router;
 
 router = new Router({
     app: new AppView({
-        SingleContentView: SingleContentView,
+        VIEWS: {
+            SINGLE_CONTENT_VIEW: SingleContentView
+        },
         collection: new Backbone.Collection(contents)
     })
 });

@@ -1,6 +1,7 @@
 'use strict';
 
-var Backbone =  require('backbone');
+var Backbone = require('backbone');
+var _ = require('underscore');
 
 var AppView = Backbone.View.extend({
     el: '#app',
@@ -8,8 +9,7 @@ var AppView = Backbone.View.extend({
     initialize: function (options) {
         options = options || {};
         this.collection = options.collection;
-        this.SingleContentView = options.SingleContentView;
-        this.MultiContentView = options.MultiContentView;
+        this.VIEWS = _.extend({}, options.VIEWS);
     },
 
     render: function () {
@@ -19,13 +19,11 @@ var AppView = Backbone.View.extend({
         for (var i = 0; i < size; i++) {
             var model = this.collection.at(i);
             var type = model.get('type');
+            var View;
             var view;
 
-            if (type === 'SINGLE_CONTENT_VIEW') {
-                view = new this.SingleContentView({ model: model });
-            } else {
-                view = new this.MultiContentView({ model: model });
-            }
+            View = this._createNewView(type);
+            view = new View({ model: model });
 
             fragment.appendChild(view.el);
             view.render();
@@ -33,6 +31,17 @@ var AppView = Backbone.View.extend({
 
         this.$el.append(fragment);
         return this;
+    },
+
+    _createNewView: function (type) {
+        var view;
+
+        if (type) {
+            view = this.VIEWS[type];
+            if (view) return view;
+            throw new Error('Could not find view type: ' + type);
+        }
+        throw new Error('type was null');
     }
 });
 
