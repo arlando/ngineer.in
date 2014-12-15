@@ -11,6 +11,7 @@ StaticContentView = ContentView.extend({
     initialize: function (options) {
         options = options || {};
         this.template = options.template || template;
+        ContentView.prototype.initialize.apply(this, arguments);
     },
 
     render: function () {

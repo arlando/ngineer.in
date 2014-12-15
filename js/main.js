@@ -4,17 +4,22 @@ var Backbone = require('backbone');
 var $ = require('jquery');
 Backbone.$ = $;
 var Router = require('./meta/router');
-var AppView = require('./views/AppView');
-var contents = require('./data/contents.json');
-var SingleContentView = require('./views/SingleContentView');
+//var AppView = require('./views/AppView');
+//var contents = require('./data/contents.json');
+//var StaticContentView = require('./views/StaticContentView');
+//var SpotifyView = require('./views/SpotifyView');
+
+//var KaleidoscopeApp = require('./kaleidoscope/Kaleidoscope');
+//var kaleidoscope = require('./kaleidoscope/three');
+
+var Flex = require('./flex/Flex');
+var lines = require('./flex/lines');
+
 var router;
 
 router = new Router({
-    app: new AppView({
-        VIEWS: {
-            SINGLE_CONTENT_VIEW: SingleContentView
-        },
-        collection: new Backbone.Collection(contents)
+    app: new Flex({
+
     })
 });
 Backbone.history.start();

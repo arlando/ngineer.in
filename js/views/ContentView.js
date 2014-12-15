@@ -5,18 +5,20 @@
 
 var Backbone = require('backbone');
 var _ = require('underscore');
+var Modernizr = require('../helpers/transitionEnd');
+var transEndEventNames = require('../helpers/transEndEventNames');
+var transEndEventName = transEndEventNames[Modernizr.prefixed( 'transition' )];
+var support = { transitions : Modernizr.csstransitions };
 var ContentView;
 
 ContentView = Backbone.View.extend({
 
-    constructor: function () {
-        this.VIEW_STATE = 'closed';
-        Backbone.View.apply(this, arguments);
-    },
+    className: 'content',
 
-    STATES: {
-        'closed': 'closed',
-        'open': 'open'
+    constructor: function () {
+        this.expanded = false;
+        this.isAnimating = false;
+        Backbone.View.apply(this, arguments);
     },
 
     events: {
@@ -31,27 +33,48 @@ ContentView = Backbone.View.extend({
 
     toggleOpenClosedState: function (e) {
         e.preventDefault();
-        if (this.getCurrentState() === 'closed') this.open();
-        else this.close();
+
+        this.elH = this.elH || this.$el.find('.scv')[0].offsetHeight;
+        this.contentEl = this.contentEl || this.$el.find('.scv-content');
+
+        if (this.isAnimating) return false;
+
+        if (!this.expanded) this.$el.addClass('active');
+
+        var self = this;
+        var onEndTransitionFn = function (e) {
+//            debugger;
+            //if (e.target !== this) return false;
+            self.isAnimating = false;
+            self.expanded = !self.expanded;
+        };
+
+//        debugger;
+        //this.el.addEventListener(transEndEventName, );
+//        this.$el.on('transitionend', onEndTransitionFn);
+        onEndTransitionFn();
+
+        var height = this.expanded ? + 30 + this.elH + 'px' : 30 + this.contentEl[0].offsetHeight + 'px';
+        this.$el.find('.scv').css('height', height);
+
+
+        if (this.expanded) this.$el.removeClass('open');
+        else this.$el.addClass('open');
+
+        this.changeOpenCloseSymbol();
+        //if (this.getCurrentState() === false) this.open();
+        //else this.close();
     },
 
-    open: function () {
-        this.handleState('open');
-    },
-
-    close: function () {
-        this.handleState('closed');
-    },
-
-    handleState: function (state) {
-        this.setCurrentState(state);
+    handleState: function () {
+        this.expanded = !this.expanded;
         this.changeOpenCloseSymbol();
         this.showOrCloseContent();
     },
 
     changeOpenCloseSymbol: function () {
         this.$openClosedStateSymbol = this.$openClosedStateSymbol || this.$el.find('.scv-open-closed-state');
-        if (this.VIEW_STATE === 'closed') this.$openClosedStateSymbol.html('+');
+        if (this.expanded === false) this.$openClosedStateSymbol.html('+');
         else this.$openClosedStateSymbol.html('x')
     },
 
@@ -60,17 +83,6 @@ ContentView = Backbone.View.extend({
         this.$scvContent.toggleClass('is-closed');
         this.$scvContent.toggleClass('is-open');
     },
-
-    setCurrentState: function (state) {
-        state = this.STATES[state];
-
-        if (!state) {
-            state = this.getCurrentState();
-            state = (state === 'closed') ? 'open' : 'closed';
-        }
-        this.VIEW_STATE = this.STATES[state]
-    },
-
 
     transitionIn: function (callback) {
         var self = this;
@@ -93,10 +105,6 @@ ContentView = Backbone.View.extend({
            if (callback) callback();
         });
     },
-
-    getCurrentState: function () {
-        return this.VIEW_STATE;
-    }
 }); //try putting class props here
 
 module.exports = ContentView;

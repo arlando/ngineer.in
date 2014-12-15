@@ -1,7 +1,14 @@
 <div class="scv scv-{{route}}" data-route="{{ route }}">
-    <div class="scv-header clearfix">
-        <div class="scv-name">{{ name }}</div>
-        <div class="scv-open-closed-state">+</div>
+    <div class="scv-header">
+        <div class="clearfix">
+            <div class="scv-name">{{ name }}</div>
+            <div class="scv-open-closed-state">+</div>
+        </div>
     </div>
-    <div class="scv-content is-closed">{{ content }}</div>
+    <div class="scv-content is-closed">
+        <div class="scv-header-clone">
+            <div class="scv-name-clone">{{ name }}</div>
+        </div>
+        {{ content }}
+    </div>
 </div>
