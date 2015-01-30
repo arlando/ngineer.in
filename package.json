@@ -29,6 +29,7 @@
     "backbone": "^1.1.2",
     "body-parser": "^1.6.5",
     "browserify": "^5.10.1",
+    "browserify-shader": "0.0.2",
     "browsernizr": "^1.0.2",
     "express": "^4.8.5",
     "handlebars": "^2.0.0-alpha.4",
